@@ -2,6 +2,7 @@ import { utils } from '../support/utils';
 
 describe('Api spec', () => {
   it('Create user with required fields', () => {
+    const apiKey = '640ceaf68678b6e67b16b17f';
     const userMail = utils.makeEmail();
     const firstName = utils.randomStr(8);
     const lastName = utils.randomStr(8);
@@ -9,11 +10,11 @@ describe('Api spec', () => {
       method: 'POST',
       url: 'https://dummyapi.io/data/v1/user/create',
       headers: {
-        'app-id': '640ceaf68678b6e67b16b17f',
+        'app-id': apiKey,
       },
       body: {
-        "lastName": firstName,
-        "firstName": lastName,
+        "firstName": firstName,
+        "lastName": lastName,
         "email": userMail
       }
     }).then((resp)=>{
@@ -23,6 +24,7 @@ describe('Api spec', () => {
   });
 
   it('delete user email', () => {
+    const apiKey = '640ceaf68678b6e67b16b17f';
     const userMail = utils.makeEmail();
     const firstName = utils.randomStr(8);
     const lastName = utils.randomStr(8);
@@ -30,11 +32,11 @@ describe('Api spec', () => {
       method: 'POST',
       url: 'https://dummyapi.io/data/v1/user/create',
       headers: {
-        'app-id': '640ceaf68678b6e67b16b17f',
+        'app-id': apiKey,
       },
       body: {
-        "lastName": firstName,
-        "firstName": lastName,
+        "firstName": firstName,
+        "lastName": lastName,
         "email": userMail
       }
     }).then((resp)=>{
@@ -43,7 +45,7 @@ describe('Api spec', () => {
         method: 'DELETE',
         url: 'https://dummyapi.io/data/v1/user/' + userId,
         headers: {
-          'app-id': '640ceaf68678b6e67b16b17f',
+          'app-id': apiKey,
         }
       }).then((resp) => {
         expect(resp.status).to.eq(200);
@@ -51,7 +53,8 @@ describe('Api spec', () => {
     });
   });
 
-  it('update user email', () => {
+  it('Update user name and las name', () => {
+    const apiKey = '640ceaf68678b6e67b16b17f';
     const userMail = utils.makeEmail();
     const firstName = utils.randomStr(8);
     const lastName = utils.randomStr(8);
@@ -63,11 +66,11 @@ describe('Api spec', () => {
       method: 'POST',
       url: 'https://dummyapi.io/data/v1/user/create',
       headers: {
-        'app-id': '640ceaf68678b6e67b16b17f',
+        'app-id': apiKey,
       },
       body: {
-        "lastName": firstName,
-        "firstName": lastName,
+        "firstName": firstName,
+        "lastName": lastName,
         "email": userMail
       }
     }).then((reps)=>{
@@ -76,11 +79,11 @@ describe('Api spec', () => {
         method: 'PUT',
         url: 'https://dummyapi.io/data/v1/user/' + userId,
         headers: {
-          'app-id': '640ceaf68678b6e67b16b17f',
+          'app-id': apiKey,
         },
         body: {
-          "firstName ": firstNameNew,
-          "lastName": lastNameNew,
+          "firstName": firstNameNew,
+          "lastName": lastNameNew
         }
       }).then((reps) => {
         expect(reps.status).to.eq(200);
